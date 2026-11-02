@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>فرح رضوى 💍</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(145deg,#fff8ed,#ead5b2);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#54371e}
+main{width:min(100%,560px);text-align:center;background:#fffaf2;border:1px solid #dfc49a;border-radius:24px;padding:30px 18px;box-shadow:0 16px 50px #76552b20}
+.eyebrow{letter-spacing:2px;color:#987858;font-size:13px}.ring{font-size:42px;margin:8px}.title{font-size:clamp(28px,7vw,42px);font-weight:800;margin:4px 0}.subtitle{font-size:17px;color:#876747;margin:10px 0 26px}
+.timer{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.unit{background:#fff;border:1px solid #ead9bd;border-radius:15px;padding:16px 3px}.num{font-size:clamp(27px,7vw,40px);font-weight:800;font-variant-numeric:tabular-nums}.label{font-size:13px;color:#876747;margin-top:4px}
+.message{font-size:18px;font-weight:700;margin:25px 0 8px}.footer{font-size:12px;color:#987858;margin-top:18px}
+@media(max-width:360px){main{padding:24px 10px}.timer{gap:5px}.unit{padding:12px 1px}}
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">SAVE THE DATE · 06.11.2026</div>
+<div class="ring">💍</div>
+<div class="title">فرح رضوى</div>
+<div class="subtitle">الجمعة 6 نوفمبر · الساعة 4:00 عصراً بتوقيت مصر 🇪🇬</div>
+<div class="timer" aria-live="off">
+<div class="unit"><div class="num" id="days">--</div><div class="label">يوم</div></div>
+<div class="unit"><div class="num" id="hours">--</div><div class="label">ساعة</div></div>
+<div class="unit"><div class="num" id="minutes">--</div><div class="label">دقيقة</div></div>
+<div class="unit"><div class="num" id="seconds">--</div><div class="label">ثانية</div></div>
+</div>
+<div class="message" id="message">كل ثانية بتقربنا من أجمل فرحة ❤️</div>
+<div class="footer">ربنا يتمم فرحتك على خير يا رضوى ❤️</div>
+</main>
+<script>
+const target = new Date("2026-11-06T16:00:00+02:00").getTime();
+function update(){
+ let left=target-Date.now();
+ if(left<=0){
+  ["days","hours","minutes","seconds"].forEach(id=>document.getElementById(id).textContent="00");
+  document.getElementById("message").textContent="الفرحة بدأت! ألف مبروك يا رضوى 🎉❤️";return;
+ }
+ const d=Math.floor(left/86400000); left%=86400000;
+ const h=Math.floor(left/3600000); left%=3600000;
+ const m=Math.floor(left/60000); const s=Math.floor((left%60000)/1000);
+ [["days",d],["hours",h],["minutes",m],["seconds",s]].forEach(([id,n])=>document.getElementById(id).textContent=String(n).padStart(2,"0"));
+}
+update();setInterval(update,1000);
+</script>
+</body>
+</html>
